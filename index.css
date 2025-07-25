@@ -11,33 +11,58 @@ body{
     flex-direction: column;
     font-family: 'Quicksand', sans-serif;
     overflow-x: hidden;
+    background-color: #f5f5f5;
+    color: #333;
 }
 .container {
     display: grid;
     grid-template-areas: "header header header"
                         "main main aside"
                         "footer footer footer";
+    animation: fadeIn 1s ease-out;
 }
 header{
     grid-area: header;
-    width: 1350px;
+    width: 100%;
     height: auto;
-    margin: 0 90px 0px 100px;
+    margin: 0px 90px 0px 100px;
     max-width: 1200px;
     padding-block: 0.5rem;
     align-items: center;
     justify-content: space-around;
     display: flex;
-}
-.logo{
-    margin-left: -20px;
-    height: 100px;
-}
-header .logo img{
-    width: 150px;
+    opacity: 0;
+    animation: slideIn 1s ease-out forwards;
 }
 
-header .nav-list ul {
+  /* Layout header-content dengan Flexbox */
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 150px;
+}
+
+  /* Logo dan Judul */
+.logo-title {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    animation: fadeInLeft 1.5s ease-out;
+}
+
+.logo-img {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
+}
+
+.logo-title h1 {
+    font-size: 24px;
+}
+
+  /* Navigation Menu */
+.nav-list ul {
     padding-left: 0;
     display: flex;
     justify-content: center;
@@ -46,8 +71,9 @@ header .nav-list ul {
 }
 header .nav-list li{
     list-style-type: none;
-}
-header .nav-list ul a{
+} 
+
+.nav-list a {
     padding : 0.5rem 1.5rem;
     border-radius: 999px;
     text-decoration: none;
@@ -58,10 +84,13 @@ header .nav-list ul a{
     transition: all 0.2s ease-in-out;
 }
 
-header .nav-list a:hover{
+  /* Hover effect */
+.nav-list a:hover {
     border-radius: 30px;
     background-color: rgb(61, 117, 5);
     color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.1);
 }
 
 /*Main content*/
@@ -73,15 +102,19 @@ main {
     background-color: #ffff;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 .nct{
     flex: 1;
     width: 100%;
     height: auto;
     max-width: 1200px;
-    margin: 55px 90px 20px 100px;
-    padding: 2.5rem 6rem;
+    margin: 50px 90px 20px 100px;
+    padding: 3.5rem 5rem;
     align-items: center;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-out forwards;
 }
 .content-nct{
     flex: 1;
@@ -128,6 +161,7 @@ main {
     background-color: transparent;
 
     color: #2d3e50;
+    transform: scale(1.05);
 }
 .nct127{
     flex: 1;
@@ -137,6 +171,9 @@ main {
     margin: 0px 40px 20px 100px;
     padding: 0rem 5rem;
     align-items: center;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-out forwards;
 }
 .member{
     flex: 1;
@@ -154,6 +191,7 @@ main {
     border-radius: 50%;
     align-items: center;
     box-shadow: 10px 10px 30px;
+    transition: transform 0.3s ease;
 }
 .name{
     padding : 0px 1rem;
@@ -162,6 +200,7 @@ main {
 .profile img:hover{
     border: 3px solid green;
     cursor: pointer;
+    transform: scale(1.1);
 }
 
 .nctdream{
@@ -172,6 +211,9 @@ main {
     margin: 0px 60px 20px 100px;
     padding: 0rem 5rem ;
     align-items: center;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease-out forwards;
 }
 .DreamProfile{
     width: 200px;
@@ -212,6 +254,8 @@ aside{
     position: fixed;
     inset-block: 0;
     inset-inline-end: 0;
+    opacity: 0;
+    animation: fadeIn 1s ease-in forwards;
 }
 
 aside .social-media{
@@ -260,19 +304,25 @@ footer{
     color: rgb(173, 162, 162);
     text-align: center;
     padding: 10px 0;
+    opacity: 0;
+    animation: fadeIn 1.5s ease-in-out forwards;
 }
 .footer h1{
     font-family: 'Times New Roman', Times, serif;
 }
 
 @media screen and (max-width: 768px) {
-    header.navbar-container{
+    .header-content {
+        gap: 65px;
+    }
+    header{
         flex-direction: column;
     }
-    header.navbar-container .nav-list ul{
+    header .nav-list ul{
         flex-wrap: wrap;
-        column-gap: 0.5rem;
+        column-gap: 3rem;
     }
+
     main{
         margin-left: 0;
     }
@@ -299,3 +349,24 @@ footer{
                                 "footer footer footer";
         }
     }
+    
+/* Keyframes for Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(-50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInLeft {
+    from { opacity: 0; transform: translateX(-30px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
