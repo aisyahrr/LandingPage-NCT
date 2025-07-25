@@ -2,7 +2,6 @@
 
 Landing Page NCT adalah proyek web yang menampilkan informasi, visual, dan konten menarik seputar boy group NCT (Neo Culture Technology). Dirancang dengan desain modern dan responsif, website ini cocok untuk fans dan pengunjung umum yang ingin mengenal NCT lebih dekat.
 
-[![Preview](https://aisyahrr.github.io/LandingPage-NCT/)
 
 ## ✨ Fitur Utama
 
